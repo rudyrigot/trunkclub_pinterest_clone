@@ -51,4 +51,6 @@ gem 'mailgun_rails'
 
 gem 'exception_notification'
 
+gem 'puma'
+
 ruby "2.3.1"
