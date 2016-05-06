@@ -47,4 +47,6 @@ end
 
 gem 'rails_12factor', group: :production
 
+gem 'mailgun_rails'
+
 ruby "2.3.1"
