@@ -82,4 +82,11 @@ Rails.application.configure do
     api_key: ENV['TRUNKCLUB_MAILGUN_KEY'],
     domain: ENV['TRUNKCLUB_MAILGUN_DOMAIN']
   }
+
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+    email: {
+      email_prefix: "[TrunkClub Pinterest clone error] ",
+      sender_address: %{"TrunkClub Pinterest clone production environement" <rudy.rigot@gmail.com>},
+      exception_recipients: %w{rudy.rigot@gmail.com}
+    }
 end

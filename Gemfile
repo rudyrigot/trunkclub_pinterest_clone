@@ -49,4 +49,6 @@ gem 'rails_12factor', group: :production
 
 gem 'mailgun_rails'
 
+gem 'exception_notification'
+
 ruby "2.3.1"
