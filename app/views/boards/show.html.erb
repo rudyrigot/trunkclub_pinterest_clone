@@ -13,5 +13,16 @@
   <%= link_to @user.full_name, @user %>
 </p>
 
+<p>
+  <strong>Pins:</strong>
+  <ul>
+    <% @pins.each do |pin| %>
+      <li>
+        <%= link_to pin.title, pin %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_board_path(@board) %> |
 <%= link_to 'Back', boards_path %>

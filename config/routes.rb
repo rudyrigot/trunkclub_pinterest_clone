@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :pins
   resources :boards
   root 'feeds#home'
 

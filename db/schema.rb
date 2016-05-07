@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160507023434) do
+ActiveRecord::Schema.define(version: 20160507173551) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,17 @@ ActiveRecord::Schema.define(version: 20160507023434) do
   end
 
   add_index "boards", ["user_id"], name: "index_boards_on_user_id", using: :btree
+
+  create_table "pins", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "board_id"
+    t.string   "link"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "pins", ["board_id"], name: "index_pins_on_board_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -57,4 +68,5 @@ ActiveRecord::Schema.define(version: 20160507023434) do
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
   add_foreign_key "boards", "users"
+  add_foreign_key "pins", "boards"
 end

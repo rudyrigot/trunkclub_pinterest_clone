@@ -1,0 +1,27 @@
+<p class="gap">
+  <strong>Title:</strong>
+  <%= @pin.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pin.description %>
+</p>
+
+<p>
+  <strong>Board:</strong>
+  <%= link_to @board.title, @board  %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= link_to @user.full_name, @user %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @pin.link %>
+</p>
+
+<%= link_to 'Edit', edit_pin_path(@pin) %> |
+<%= link_to 'Back', pins_path %>
