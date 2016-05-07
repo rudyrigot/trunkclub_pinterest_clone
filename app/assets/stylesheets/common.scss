@@ -2,6 +2,13 @@ html, body {
 	height: 100%;
 }
 
+body {
+	font-family: 'Cardo', serif;
+}
+h1, h2, h3, h4, h5, h6,.navbar, .btn, .title-font {
+	font-family: 'Montserrat', sans-serif;
+}
+
 .sm-gap {
 	margin-top: 20px !important;
 }
@@ -12,11 +19,29 @@ html, body {
 	margin-top: 100px !important;
 }
 
+body {
+	.btn-primary {
+		background-color: #151e28;
+		background: linear-gradient(#151e28, #3e5775);
+		border-color: #151e28;
+
+		&:hover {
+			background-color: #151e28;
+			background: linear-gradient(#3e5775, #151e28);
+			border-color: #151e28;
+		}
+		&:active, &.active, .open > &.dropdown-toggle {
+			background-color: #3e5775;
+			border-color: #151e28;
+		}
+	}
+}
+
 a {
-	color: #F80002;
+	color: #151E28;
 
 	&:hover {
-		color: #F80002;
+		color: #151E28;
 	}
 }
 
@@ -32,4 +57,13 @@ a {
 	background: white;
 	border-color: #eee;
 	box-shadow: none;
+}
+
+#navbar-users {
+	background-color: #151E28;
+	color: #87949F;
+
+	.navbar-brand {
+		color: white;
+	}
 }
