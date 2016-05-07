@@ -2,11 +2,11 @@ html, body {
 	height: 100%;
 }
 
-body {
+html body {
 	font-family: 'Cardo', serif;
-}
-h1, h2, h3, h4, h5, h6,.navbar, .btn, .title-font {
-	font-family: 'Montserrat', sans-serif;
+	h1, h2, h3, h4, h5, h6,.navbar, .btn, .title-font {
+		font-family: 'Montserrat', sans-serif;
+	}
 }
 
 .sm-gap {
@@ -66,4 +66,8 @@ a {
 	.navbar-brand {
 		color: white;
 	}
+}
+
+#navbar-admins {
+	margin-bottom: 0;
 }
