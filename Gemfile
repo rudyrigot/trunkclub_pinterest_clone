@@ -53,4 +53,6 @@ gem 'exception_notification'
 
 gem 'puma'
 
+gem 'devise'
+
 ruby "2.3.1"

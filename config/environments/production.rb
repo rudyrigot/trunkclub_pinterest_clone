@@ -89,4 +89,6 @@ Rails.application.configure do
       sender_address: %{"TrunkClub Pinterest clone production environement" <rudy.rigot@gmail.com>},
       exception_recipients: %w{rudy.rigot@gmail.com}
     }
+
+  config.action_mailer.default_url_options = { host: 'trunkclub-pinterest-clone.herokuapp.com', protocol: 'https' }
 end

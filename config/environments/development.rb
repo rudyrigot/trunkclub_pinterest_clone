@@ -44,4 +44,6 @@ Rails.application.configure do
     api_key: ENV['TRUNKCLUB_MAILGUN_KEY'],
     domain: ENV['TRUNKCLUB_MAILGUN_DOMAIN']
   }
+
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end
