@@ -8,7 +8,15 @@ class User < ActiveRecord::Base
 
   # @return [Boolean] true if user is admin or rudy.rigot@gmail.com
   def admin?
-    self.admin || self.email == 'rudy.rigot@gmail.com'
+    admin || email == 'rudy.rigot@gmail.com'
+  end
+
+  def full_name
+    if first_name.present? && last_name.present?
+      "#{first_name} #{last_name}"
+    else
+      email
+    end
   end
 
   # @return [String] a random password of size 10
