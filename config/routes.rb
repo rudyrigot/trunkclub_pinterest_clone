@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :boards
   root 'feeds#home'
 
   devise_for :users, path: "auth"

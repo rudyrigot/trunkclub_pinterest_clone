@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :boards, -> { order(:title) }, dependent: :destroy
+
   # Include default devise modules. Others available are:
   # :omniauthable
   devise :database_authenticatable, :registerable,

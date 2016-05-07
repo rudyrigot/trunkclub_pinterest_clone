@@ -18,5 +18,14 @@
   <%= @user.admin %>
 </p>
 
+<p>
+  <strong>Boards:</strong>
+  <ul>
+    <% @boards.each do |board| %>
+      <%= link_to board.title, board %>
+    <% end %>
+  </ul>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
