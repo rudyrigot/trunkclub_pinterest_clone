@@ -55,4 +55,6 @@ gem 'puma'
 
 gem 'devise'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
 ruby "2.3.1"
