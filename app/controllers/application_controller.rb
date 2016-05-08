@@ -6,5 +6,5 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # TODO should be tested too
-  before_action :authenticate_user! unless Rails.env.test?
+  before_action :authenticate_user!
 end

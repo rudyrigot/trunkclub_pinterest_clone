@@ -19,3 +19,7 @@ class ActiveSupport::TestCase
     sign_out @controller.current_user if @controller.user_signed_in?
   end
 end
+
+class ActionController::TestCase
+  include Devise::TestHelpers
+end

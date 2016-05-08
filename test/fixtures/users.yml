@@ -5,14 +5,17 @@ rudy:
   first_name: Rudy
   last_name: Rudy
   admin: false
+  confirmed_at: <%= 2.days.ago %>
 
 admin:
   email: admin@gmail.com
   first_name: Admin
   last_name: TrunkTerest
   admin: true
+  confirmed_at: <%= 2.days.ago %>
 
 user1:
   email: user1@gmail.com
   first_name: User1
   last_name: TrunkTerest
+  confirmed_at: <%= 2.days.ago %>

@@ -1,13 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyText
-  board_id: 
-  link: MyString
+user1_1_1:
+  title: User1's 1st pin
+  description: An awesome pin
+  board: user1_1
+  link: https://www.trunkclub.com/
 
-two:
-  title: MyString
-  description: MyText
-  board_id: 
-  link: MyString
+user1_1_2:
+  title: User1's 2st pin
+  description: An awesome pin
+  board: user1_1
+  link: https://www.trunkclub.com/
+
+user1_2_1:
+  title: User1's 3rd pin
+  description: An awesome pin
+  board: user1_2
+  link: https://www.trunkclub.com/
+
+user1_2_2:
+  title: User1's 4th pin
+  description: An awesome pin
+  board: user1_2
+  link: https://www.trunkclub.com/

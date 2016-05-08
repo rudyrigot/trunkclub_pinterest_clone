@@ -1,15 +1,14 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
 
   setup do
     @user = users(:user1)
-    # sign_in_as :admin
+    sign_in_as :admin
   end
 
   teardown do
-    # sign_out_if_logged_in
+    sign_out_if_logged_in
   end
 
   test "should get index" do

@@ -1,8 +1,14 @@
 require 'test_helper'
 
 class BoardsControllerTest < ActionController::TestCase
+
   setup do
-    @board = boards(:one)
+    @board = boards(:user1_1)
+    sign_in_as :admin
+  end
+
+  teardown do
+    sign_out_if_logged_in
   end
 
   test "should get index" do

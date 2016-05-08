@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyText
-  user_id: 
+user1_1:
+  title: User1's 1st board
+  description: This is a really cool board!
+  user: user1
 
-two:
-  title: MyString
-  description: MyText
-  user_id: 
+user1_2:
+  title: User1's 2st board
+  description: This is a really cool board!
+  user: user1
