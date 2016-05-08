@@ -12,11 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :board_id %><br>
+    <%= f.label :board_id, class: 'mandatory' %><br>
     <%= f.collection_select :board_id, @boards, :id, (current_user.admin? ? :title_with_user : :title), {}, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, class: 'mandatory' %><br>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="field">
@@ -24,7 +24,7 @@
     <%= f.text_area :description, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :link %><br>
+    <%= f.label :link, class: 'mandatory' %><br>
     <%= f.text_field :link, class: 'form-control' %>
   </div>
   <div class="actions">

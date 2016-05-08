@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, class: 'mandatory' %><br>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="field">
@@ -21,7 +21,7 @@
   </div>
   <% if current_user.admin? %>
     <div class="field">
-      <%= f.label :user_id %><br>
+      <%= f.label :user_id, class: 'mandatory' %><br>
       <%= f.collection_select :user_id, User.all, :id, :full_name, {}, class: 'form-control' %>
     </div>
   <% end %>

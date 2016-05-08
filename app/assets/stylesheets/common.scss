@@ -76,3 +76,7 @@ a {
 .admin-icons {
 	font-size: 1.2em;
 }
+
+label.mandatory:after {
+	content: '*';
+}
