@@ -1,4 +1,19 @@
 <section class="clean well board">
+  <div class="subscribe-button">
+    <div class="not-subscribed">
+      <%= link_to '#', title: "Subscribe to this board?", data: { toggle:"tooltip", placement:"bottom" } do %>
+        <i class="fa fa-plus-square-o" aria-hidden="true"></i>
+      <% end %>
+    </div>
+    <div class="pending">
+      <i class="fa fa-cog fa-spin fa-fw margin-bottom"></i>
+    </div>
+    <div class="subscribed">
+      <%= link_to '#', title: 'You are subscribed to this board. Unsubscribe?', data: { toggle:"tooltip", placement:"bottom", confirm: "Are you sure you want to unsubscribe from \"#{board.title}\"?" } do %>
+        <i class="fa fa-plus-square" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  </div>
   <h3><%= link_to board.title, board %></h3>
   <p><em><small>by <%= link_to board.user.full_name, board.user %></small></em></p>
   <% if board.present? %>
