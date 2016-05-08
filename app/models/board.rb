@@ -7,4 +7,8 @@ class Board < ActiveRecord::Base
   def title_with_user
     "\"#{title}\" by #{user.full_name}"
   end
+
+  def can_be_edited_by?(user)
+    user.admin? || user == self.user
+  end
 end

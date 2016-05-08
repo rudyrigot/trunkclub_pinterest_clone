@@ -1,28 +1,26 @@
-<p class="gap">
-  <strong>Title:</strong>
-  <%= @board.title %>
-</p>
+<h2 class="text-center gap">Board "<%= @board.title %>"</h2>
+<p class="text-center"><em>by <%= link_to @user.full_name, @user %></em></p>
 
-<p>
-  <strong>Description:</strong>
+<p class="text-center sm-gap">
   <%= @board.description %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= link_to @user.full_name, @user %>
-</p>
+<% if @board.can_be_edited_by?(current_user) %>
+  <p class="text-center">
+    <%= link_to 'Edit board', edit_board_path(@board) %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Pins:</strong>
-  <ul>
-    <% @pins.each do |pin| %>
-      <li>
-        <%= link_to pin.title, pin %>
-      </li>
-    <% end %>
-  </ul>
-</p>
-
-<%= link_to 'Edit', edit_board_path(@board) %> |
-<%= link_to 'Back', boards_path %>
+<div class="gap pins-layout">
+  <% if @pins.empty? %>
+    <p class="text-center">- no recent pin -</p>
+  <% else %>
+    <div class="row">
+      <% @pins.each_with_index do |pin, i| %>
+        <div class="pin-wrapper col-lg-3 col-md-4 col-sm-6">
+          <%= render pin %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

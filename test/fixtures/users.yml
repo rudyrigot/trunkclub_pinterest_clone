@@ -19,3 +19,9 @@ user1:
   first_name: User1
   last_name: TrunkTerest
   confirmed_at: <%= 2.days.ago %>
+
+user2:
+  email: user2@gmail.com
+  first_name: User2
+  last_name: TrunkTerest
+  confirmed_at: <%= 2.days.ago %>
