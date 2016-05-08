@@ -1,3 +1,36 @@
 // Place all the styles related to the Pins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.pins-layout {
+  .pin-wrapper:nth-child(4n+1) {
+    clear: left;
+  }
+  @media (max-width: 1200px) {
+    .pin-wrapper:nth-child(4n+1) {
+      clear: none;
+    }
+    .pin-wrapper:nth-child(3n+1) {
+      clear: left;
+    }
+  }
+  @media (max-width: 992px) {
+    .pin-wrapper:nth-child(3n+1) {
+      clear: none;
+    }
+    .pin-wrapper:nth-child(2n+1) {
+      clear: left;
+    }
+  }
+}
+
+section.pin {
+  h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+  }
+  .description a {
+    color: #333;
+  }
+}

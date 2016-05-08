@@ -1,0 +1,7 @@
+<section class="clean well board">
+  <h3><%= link_to board.title, board %></h3>
+  <p><em><small>by <%= link_to board.user.full_name, board.user %></small></em></p>
+  <% if board.present? %>
+    <p class="description"><%= link_to truncate(board.description, length: 100, separator: ' '), board %></p>
+  <% end %>
+</section>

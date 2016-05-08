@@ -1,0 +1,14 @@
+<section class="clean well pin">
+  <h3><%= link_to pin.title, pin %></h3>
+  <% if pin.description.present? %>
+    <p class="description"><%= link_to pin.description, pin %></p>
+  <% end %>
+  <p>
+    <em>
+      <small>
+        Pinned <span title="<%= pin.created_at %>"><%= time_ago_in_words pin.created_at %> ago</span>
+        on <%= link_to pin.board.user.full_name, pin.board.user %> "<%= link_to pin.board.title, pin.board %>"
+      </small>
+    </em>
+  </p>
+</section>
