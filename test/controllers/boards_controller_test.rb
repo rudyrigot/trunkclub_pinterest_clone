@@ -119,7 +119,7 @@ class BoardsControllerTest < ActionController::TestCase
       delete :destroy, id: @board
     end
 
-    assert_redirected_to boards_path
+    assert_redirected_to user_path(users(:user1))
   end
 
   test "owner should destroy board" do
@@ -128,7 +128,7 @@ class BoardsControllerTest < ActionController::TestCase
       delete :destroy, id: @board
     end
 
-    assert_redirected_to boards_path
+    assert_redirected_to user_path(users(:user1))
   end
 
   test "everybody should not destroy board" do
