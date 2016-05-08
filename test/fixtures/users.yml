@@ -3,7 +3,7 @@
 rudy:
   email: rudy.rigot@gmail.com
   first_name: Rudy
-  last_name: Rudy
+  last_name: Rigot
   admin: false
   confirmed_at: <%= 2.days.ago %>
 
