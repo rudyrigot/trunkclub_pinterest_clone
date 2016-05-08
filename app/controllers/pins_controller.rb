@@ -36,7 +36,10 @@ class PinsController < ApplicationController
     @pin = Pin.new(pin_params)
 
     respond_to do |format|
-      if @pin.save
+      if !current_user.admin? && @pin.board.user != current_user
+        format.html { redirect_to user_path(current_user), alert: 'You can only pin to your own boards.' }
+        format.json { render json: {}, status: :unauthorized }
+      elsif @pin.save
         format.html { redirect_to @pin, notice: 'Pin was successfully created.' }
         format.json { render :show, status: :created, location: @pin }
       else

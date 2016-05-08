@@ -44,13 +44,22 @@ class PinsControllerTest < ActionController::TestCase
     assert_redirected_to pin_path(assigns(:pin))
   end
 
-  test "everyone should create pin" do
-    sign_in_as :user2
+  test "everyone should create pin on own board" do
+    sign_in_as :user1
     assert_difference('Pin.count') do
       post :create, pin: { board_id: @pin.board_id, description: @pin.description, link: @pin.link, title: @pin.title }
     end
 
     assert_redirected_to pin_path(assigns(:pin))
+  end
+
+  test "everyone should not create pin on someone else's board" do
+    sign_in_as :user2
+    assert_difference('Pin.count', 0) do
+      post :create, pin: { board_id: @pin.board_id, description: @pin.description, link: @pin.link, title: @pin.title }
+    end
+
+    assert_redirected_to user_path(users(:user2))
   end
 
   test "should show pin" do
