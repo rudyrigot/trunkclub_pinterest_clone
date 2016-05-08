@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable, :lockable, :timeoutable
 
+  validates :first_name, :last_name, presence: true
+
 
   # @return [Boolean] true if user is admin or rudy.rigot@gmail.com
   def admin?
