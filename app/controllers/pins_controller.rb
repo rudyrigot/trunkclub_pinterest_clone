@@ -2,6 +2,9 @@ class PinsController < ApplicationController
   before_action :set_pin, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  before_action :admin_only!, except: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :can_edit_only!, only: [:edit, :update, :destroy]
+
   # GET /pins
   # GET /pins.json
   def index
@@ -73,5 +76,12 @@ class PinsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pin_params
       params.require(:pin).permit(:title, :description, :board_id, :link)
+    end
+
+    def can_edit_only!
+      respond_to do |format|
+        format.html { redirect_to root_path, alert: 'You were redirected because you are not the owner of that page.' unless @pin.can_be_edited_by? current_user }
+        format.json { render status: :forbidden unless @pin.can_be_edited_by? current_user }
+      end
     end
 end
