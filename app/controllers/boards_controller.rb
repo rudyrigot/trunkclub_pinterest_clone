@@ -31,6 +31,7 @@ class BoardsController < ApplicationController
   # POST /boards.json
   def create
     @board = Board.new(board_params)
+    @board.user = current_user unless current_user.admin?  # If not admin, can only create board for oneself
 
     respond_to do |format|
       if @board.save

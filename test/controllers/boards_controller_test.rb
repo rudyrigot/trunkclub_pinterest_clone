@@ -40,15 +40,27 @@ class BoardsControllerTest < ActionController::TestCase
     assert_difference('Board.count') do
       post :create, board: { description: @board.description, title: @board.title, user_id: @board.user_id }
     end
+    assert_equal users(:user1), assigns(:board).user
 
     assert_redirected_to board_path(assigns(:board))
   end
 
   test "everybody should create board" do
+    sign_in_as :user1
+    assert_difference('Board.count') do
+      post :create, board: { description: @board.description, title: @board.title, user_id: @board.user_id }
+    end
+    assert_equal users(:user1), assigns(:board).user
+
+    assert_redirected_to board_path(assigns(:board))
+  end
+
+  test "can only create board for oneself" do
     sign_in_as :user2
     assert_difference('Board.count') do
       post :create, board: { description: @board.description, title: @board.title, user_id: @board.user_id }
     end
+    assert_equal users(:user2), assigns(:board).user
 
     assert_redirected_to board_path(assigns(:board))
   end
