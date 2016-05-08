@@ -1,7 +1,7 @@
 <section class="clean well pin">
   <h3><%= link_to pin.title, pin %></h3>
   <% if pin.description.present? %>
-    <p class="description"><%= link_to pin.description, pin %></p>
+    <p class="description"><%= link_to truncate(pin.description, length: 100, separator: ' '), pin %></p>
   <% end %>
   <p>
     <em>
