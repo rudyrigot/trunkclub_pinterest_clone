@@ -14,7 +14,15 @@
   <div class="tab-content">
 
     <div role="tabpanel" class="tab-pane gap active" id="boards">
-      <% if @boards.empty? %>
+      <% if @user == current_user %>
+        <div class="clean well title-font">
+          <%= link_to new_board_path do %>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            <em>Create a new board</em>
+          <% end %>
+        </div>
+      <% end %>
+      <% if @boards.empty? && current_user != @user %>
         <p class="text-center">- No boards yet -</p>
       <% else %>
         <% @boards.each do |board| %>

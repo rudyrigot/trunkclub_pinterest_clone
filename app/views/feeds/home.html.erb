@@ -18,6 +18,12 @@
   <section class="col-md-3">
     <h2 class="gap">Random boards</h2>
     <div class="sm-gap">
+      <div class="clean well title-font">
+        <%= link_to new_board_path do %>
+          <i class="fa fa-plus" aria-hidden="true"></i>
+          <em>Create a new board</em>
+        <% end %>
+      </div>
       <% if @random_boards.empty? %>
         <p class="text-center">- no board yet -</p>
       <% else %>

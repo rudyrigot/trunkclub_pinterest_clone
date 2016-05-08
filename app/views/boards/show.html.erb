@@ -17,7 +17,15 @@
 <% end %>
 
 <div class="gap pins-layout">
-  <% if @pins.empty? %>
+  <% if @user == current_user %>
+    <div class="clean well title-font">
+      <%= link_to new_pin_path(board_id: @board.id) do %>
+        <i class="fa fa-plus" aria-hidden="true"></i>
+        <em>Add a new pin</em>
+      <% end %>
+    </div>
+  <% end %>
+  <% if @pins.empty? && @user != current_user %>
     <p class="text-center">- no recent pin -</p>
   <% else %>
     <div class="row">
