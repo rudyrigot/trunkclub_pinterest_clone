@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :pins
-  resources :boards
   root 'feeds#home'
 
   devise_for :users, path: "auth"
   resources :users
+  resources :boards
+  resources :pins
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :admin_only!
+  before_action :admin_only!, except: :show
 
   # GET /users
   # GET /users.json
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @boards = @user.boards
+    @pins = Pin.joins(:board).where('boards.user_id = ?', @user.id).order(created_at: :desc)
   end
 
   # GET /users/new

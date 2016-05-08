@@ -59,10 +59,10 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should not show user if not admin" do
-    sign_in_as :user1
+  test "should show user even if not admin" do
+    sign_in_as :user2
     get :show, id: @user
-    assert_redirected_to root_path
+    assert_response :success
   end
 
   test "should get edit" do

@@ -1,31 +1,48 @@
-<p class="gap">
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<h2 class="text-center gap">
+  <%= @user.full_name %>
+</h2>
 
-<p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
-</p>
+<div>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <strong>Boards:</strong>
-  <ul>
-    <% @boards.each do |board| %>
-      <%= link_to board.title, board %>
-    <% end %>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs gap" role="tablist">
+    <li role="presentation" class="active"><a href="#boards" aria-controls="boards" role="tab" data-toggle="tab">Boards</a></li>
+    <li role="presentation"><a href="#pins" aria-controls="pins" role="tab" data-toggle="tab">All pins</a></li>
   </ul>
-</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+  <!-- Tab panes -->
+  <div class="tab-content">
+
+    <div role="tabpanel" class="tab-pane gap active" id="boards">
+      <% if @boards.empty? %>
+        <p class="text-center">- No boards yet -</p>
+      <% else %>
+        <% @boards.each do |board| %>
+          <%= render board %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div role="tabpanel" class="tab-pane gap" id="pins">
+      <div class="gap pins-layout">
+        <% if @pins.empty? %>
+          <p class="text-center">- No pins yet -</p>
+        <% else %>
+          <div class="row">
+            <% @pins.each_with_index do |pin, i| %>
+              <div class="pin-wrapper col-lg-3 col-md-4 col-sm-6">
+                <%= render pin %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<% if current_user.admin? %>
+  <%= link_to 'Edit user', edit_user_path(@user) %>
+<% end %>

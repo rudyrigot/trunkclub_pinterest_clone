@@ -7,7 +7,7 @@
     <em>
       <small>
         Pinned <span title="<%= pin.created_at %>"><%= time_ago_in_words pin.created_at %> ago</span>
-        on <%= link_to pin.board.user.full_name, pin.board.user %> "<%= link_to pin.board.title, pin.board %>"
+        on <%= link_to pin.board.user.full_name, pin.board.user %>'s' "<%= link_to pin.board.title, pin.board %>"
       </small>
     </em>
   </p>
