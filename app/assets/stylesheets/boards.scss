@@ -3,14 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 section.board {
-  .subscribe-button {
-    float: right;
-  }
   h3 {
     margin-top: 0;
     font-size: 1.2em;
   }
   .description a {
     color: #333;
+  }
+}
+
+.subscribe-button {
+  float: right;
+
+  .subscribed, .not-subscribed, .pending {
+    display: none;
+  }
+  &.subscribed .subscribed, &.not-subscribed .not-subscribed, &.pending .pending {
+    display: block;
   }
 }

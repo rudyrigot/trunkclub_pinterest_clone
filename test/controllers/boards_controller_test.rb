@@ -139,4 +139,68 @@ class BoardsControllerTest < ActionController::TestCase
 
     assert_redirected_to root_path
   end
+
+  test "everybody but owner should subscribe to board" do
+    sign_in_as :user2
+    assert_difference "User.find(users(:user2).id).subscriptions.count" do
+      assert_difference "Board.find(boards(:user1_1).id).subscribers.count" do
+        post :subscribe, id: boards(:user1_1)
+      end
+    end
+    assert_redirected_to board_path(boards(:user1_1))
+  end
+
+  test "everybody but owner should subscribe to board in JSON format" do
+    sign_in_as :user2
+    assert_difference "User.find(users(:user2).id).subscriptions.count" do
+      assert_difference "Board.find(boards(:user1_1).id).subscribers.count" do
+        post :subscribe, id: boards(:user1_1), format: 'json'
+      end
+    end
+    assert_response :success
+    assert_equal 'OK', response.body
+  end
+
+  test "owner should not subscribe to own board" do
+    sign_in_as :user1
+    assert_difference "User.find(users(:user2).id).subscriptions.count", 0 do
+      assert_difference "Board.find(boards(:user1_1).id).subscribers.count", 0 do
+        post :subscribe, id: boards(:user1_1)
+      end
+    end
+    assert_redirected_to root_path
+  end
+
+  test "everybody but owner should unsubscribe to board" do
+    users(:user2).update! subscriptions: [boards(:user1_1)]
+    sign_in_as :user2
+    assert_difference "User.find(users(:user2).id).subscriptions.count", -1 do
+      assert_difference "Board.find(boards(:user1_1).id).subscribers.count", -1 do
+        post :unsubscribe, id: boards(:user1_1)
+      end
+    end
+    assert_redirected_to board_path(boards(:user1_1))
+  end
+
+  test "everybody but owner should unsubscribe to board in JSON format" do
+    users(:user2).update! subscriptions: [boards(:user1_1)]
+    sign_in_as :user2
+    assert_difference "User.find(users(:user2).id).subscriptions.count", -1 do
+      assert_difference "Board.find(boards(:user1_1).id).subscribers.count", -1 do
+        post :unsubscribe, id: boards(:user1_1), format: 'json'
+      end
+    end
+    assert_response :success
+    assert_equal 'OK', response.body
+  end
+
+  test "owner should not unsubscribe to own board" do
+    sign_in_as :user1
+    assert_difference "User.find(users(:user2).id).subscriptions.count", 0 do
+      assert_difference "Board.find(boards(:user1_1).id).subscribers.count", 0 do
+        post :unsubscribe, id: boards(:user1_1)
+      end
+    end
+    assert_redirected_to root_path
+  end
 end

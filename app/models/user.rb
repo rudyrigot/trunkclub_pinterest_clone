@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :boards, -> { order(:title) }, dependent: :destroy
 
+  has_and_belongs_to_many :subscriptions, class_name: "Board", join_table: "subscriptions"
+
   # Include default devise modules. Others available are:
   # :omniauthable
   devise :database_authenticatable, :registerable,
