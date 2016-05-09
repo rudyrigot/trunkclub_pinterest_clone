@@ -5,6 +5,8 @@ class Board < ActiveRecord::Base
 
   validates :title, :user_id, presence: true
 
+  scope :random, -> { includes(:user).order("RANDOM()").limit(10) }
+
   def title_with_user
     "\"#{title}\" by #{user.full_name}"
   end

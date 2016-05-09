@@ -1,12 +1,32 @@
 <div class="row" id="home">
   <section class="col-md-9">
+    <h2 class="gap">Most recent pins in your subscribed boards</h2>
+    <div class="sm-gap pins-layout">
+      <% if @most_recent_pins_on_subscribed_boards.empty?  %>
+        <div class="clean well">
+          <p class="title-font"><strong>It looks like you're not subscribed to any board yet?</strong></p>
+          <p>You should check out the ones right there on the right!</p>
+        </div>
+      <% else %>
+        <div class="row">
+          <% @most_recent_pins_on_subscribed_boards.each do |pin| %>
+            <div class="pin-wrapper col-lg-3 col-md-4 col-sm-6">
+              <%= render pin %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <hr>
+
     <h2 class="gap">Most recent pins</h2>
     <div class="sm-gap pins-layout">
       <% if @most_recent_pins.empty? %>
         <p class="text-center">- no recent pin -</p>
       <% else %>
         <div class="row">
-          <% @most_recent_pins.each_with_index do |pin, i| %>
+          <% @most_recent_pins.each do |pin| %>
             <div class="pin-wrapper col-lg-3 col-md-4 col-sm-6">
               <%= render pin %>
             </div>
