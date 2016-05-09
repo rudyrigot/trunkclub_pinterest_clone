@@ -1,4 +1,5 @@
-<section class="clean well board">
+<section id="board-<%= board.id %>" class="clean well board">
+  <%= render partial: '/boards/subscribe_button', locals: { board: board, small: true } %>
   <h3><%= link_to board.title, board %></h3>
   <p><em><small>by <%= link_to board.user.full_name, board.user %></small></em></p>
   <% if board.present? %>

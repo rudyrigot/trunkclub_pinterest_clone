@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Deviseable
+  include SubscribedBoardsListable  # OPTIMIZE by only attaching the callback to actions that need it
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

@@ -10,4 +10,17 @@ section.board {
   .description a {
     color: #333;
   }
+
+  .subscribe-button {
+    float: right;
+  }
+}
+
+.subscribe-button {
+  .subscribed, .not-subscribed, .pending {
+    display: none;
+  }
+  &.subscribed .subscribed, &.not-subscribed .not-subscribed, &.pending .pending {
+    display: block;
+  }
 }

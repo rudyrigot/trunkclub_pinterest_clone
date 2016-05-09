@@ -1,9 +1,10 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :update, :destroy]
+  before_action :set_board, only: [:show, :edit, :update, :destroy, :subscribe, :unsubscribe]
   before_action :authenticate_user!
 
-  before_action :admin_only!, except: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :admin_only!, except: [:show, :new, :create, :edit, :update, :destroy, :subscribe, :unsubscribe]
   before_action :can_edit_only!, only: [:edit, :update, :destroy]
+  before_action :non_owner_only!, only: [:subscribe, :unsubscribe]
 
   # GET /boards
   # GET /boards.json
@@ -69,6 +70,25 @@ class BoardsController < ApplicationController
     end
   end
 
+  def subscribe
+    current_user.subscriptions << @board
+    current_user.subscriptions.uniq!
+    current_user.save!
+    respond_to do |format|
+      format.html { redirect_to board_path(@board), notice: "You are now subscribed to \"#{@board.title}\"." }
+      format.json { render plain: "OK" }
+    end
+  end
+
+  def unsubscribe
+    current_user.subscriptions.delete @board
+    current_user.save!
+    respond_to do |format|
+      format.html { redirect_to board_path(@board), notice: "You are now unsubscribed from \"#{@board.title}\"." }
+      format.json { render plain: "OK" }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_board
@@ -78,6 +98,15 @@ class BoardsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def board_params
       params.require(:board).permit(:title, :description, :user_id)
+    end
+
+    def non_owner_only!
+      if @board.user == current_user
+        respond_to do |format|
+          format.html { redirect_to root_path, alert: "You can't subscribe to your own board." }
+          format.json { render status: :forbidden }
+        end
+      end
     end
 
     def can_edit_only!

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   devise_for :users, path: "auth"
   resources :users
-  resources :boards
+  resources :boards do
+    member do
+      post 'subscribe'
+      post 'unsubscribe'
+    end
+  end
   resources :pins
 
   # The priority is based upon order of creation: first created -> highest priority.

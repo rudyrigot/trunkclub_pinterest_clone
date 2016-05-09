@@ -8,6 +8,7 @@
   <ul class="nav nav-tabs gap" role="tablist">
     <li role="presentation" class="active"><a href="#boards" aria-controls="boards" role="tab" data-toggle="tab">Boards</a></li>
     <li role="presentation"><a href="#pins" aria-controls="pins" role="tab" data-toggle="tab">All pins</a></li>
+    <li role="presentation"><a href="#subscriptions" aria-controls="subscriptions" role="tab" data-toggle="tab">Subscriptions</a></li>
   </ul>
 
   <!-- Tab panes -->
@@ -45,6 +46,16 @@
           </div>
         <% end %>
       </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane gap" id="subscriptions">
+      <% if @boards_subscribed.empty? %>
+        <p class="text-center">- No subscriptions yet -</p>
+      <% else %>
+        <% @boards_subscribed.each do |board| %>
+          <%= render board %>
+        <% end %>
+      <% end %>
     </div>
 
   </div>
