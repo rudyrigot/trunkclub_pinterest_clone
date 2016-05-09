@@ -1,5 +1,6 @@
 <h2 class="text-center gap">Board "<%= @board.title %>"</h2>
 <p class="text-center"><em>by <%= link_to @user.full_name, @user %></em></p>
+<div class="text-center"><%= render partial: '/boards/subscribe_button', locals: { board: @board, small: false } %></div>
 
 <p class="text-center sm-gap">
   <%= @board.description %>

@@ -1,21 +1,5 @@
 <section id="board-<%= board.id %>" class="clean well board">
-  <% if user_signed_in? && board.user != current_user %>
-    <div class="subscribe-button <%= @boards_subscribed.include?(board.id) ? 'subscribed' : 'not-subscribed' %>">
-      <div class="not-subscribed">
-        <%= link_to subscribe_board_path(board), method: :post, title: "Subscribe to this board?", data: { toggle:"tooltip", placement:"bottom", :"board-id" => board.id } do %>
-          <i class="fa fa-plus-square-o" aria-hidden="true"></i>+
-        <% end %>
-      </div>
-      <div class="pending">
-        <i class="fa fa-cog fa-spin fa-fw margin-bottom"></i>o
-      </div>
-      <div class="subscribed">
-        <%= link_to unsubscribe_board_path(board), method: :post, title: 'You are subscribed to this board. Unsubscribe?', data: { toggle:"tooltip", placement:"bottom", :"board-id" => board.id, confirm: "Are you sure you want to unsubscribe from \"#{board.title}\"?" } do %>
-          <i class="fa fa-plus-square" aria-hidden="true"></i>-
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: '/boards/subscribe_button', locals: { board: board, small: true } %>
   <h3><%= link_to board.title, board %></h3>
   <p><em><small>by <%= link_to board.user.full_name, board.user %></small></em></p>
   <% if board.present? %>
