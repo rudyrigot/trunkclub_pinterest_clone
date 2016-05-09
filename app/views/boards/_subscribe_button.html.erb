@@ -1,5 +1,5 @@
 <% if user_signed_in? && board.user != current_user %>
-  <div class="subscribe-button <%= @boards_subscribed.include?(board.id) ? 'subscribed' : 'not-subscribed' %>">
+  <div class="subscribe-button <%= @boards_subscribed_ids.include?(board.id) ? 'subscribed' : 'not-subscribed' %>">
     <div class="not-subscribed">
       <%= link_to subscribe_board_path(board), class: small ? '' : 'btn btn-default', method: :post, title: "Subscribe to this board?", data: { toggle:"tooltip", placement:"bottom", :"board-id" => board.id } do %>
         <i class="fa fa-plus-square-o" aria-hidden="true"></i>+

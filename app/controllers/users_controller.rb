@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def show
     @boards = @user.boards
     @pins = Pin.joins(:board).where('boards.user_id = ?', @user.id).order(created_at: :desc)
+    @boards_subscribed = Board.includes(:user).where(id: @boards_subscribed_ids)
   end
 
   # GET /users/new
